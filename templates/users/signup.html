@@ -1,14 +1,14 @@
 {% extends "users/base.html" %}
 
 {% block head_content %}
-    <title>PlatziGram Sign up</title>
+    <title>Instagram Sign up</title>
 {% endblock %}
 
 {%block container %}
     {% if error %}
         <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
-    <form action="{% url 'users:login' %}" method="POST">
+    <form action="{% url 'users:signup' %}" method="POST">
         {% csrf_token %}
         {% for elem in form %}
             <div class="form-group">
