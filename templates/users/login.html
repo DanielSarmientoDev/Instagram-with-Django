@@ -1,0 +1,28 @@
+
+{% extends "users/base.html" %}
+
+{% block head_content %}
+<title>Platzigram sign in</title>
+{% endblock%}
+
+{% block container %}
+
+    {% if error %}
+    <p class="alert alert-danger">{{ error }}</p>
+    {% endif%}
+
+    <form method="POST" action="{% url "login" %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control mb-2" type="text" placeholder="Username" name="username" />
+            <input class="form-control" type="password" placeholder="Password" name="password" />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <div class="invalid-feedback">
+            {% for error in form.errors  %}
+              {{error}}
+            {% endfor %}
+        </div>
+    </form>
+    <p class="mt-4">Don't have an account yet? <a href="{%url "signup"%}">Sign up here.</a></p>
+{% endblock %}
